@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { add,multiplay } from '../../utilities/calculate';
 import Cosmetic from '../Cosmetic/Cosmetic';
 
@@ -41,7 +41,16 @@ const Cosmetics = () => {
     //       "name": "Bell Clemons"
     //     }
     //   ]
-    
+
+   
+        const [cosmetics, setCosmetics] = useState([]);
+
+        useEffect(()=>{
+          fetch('data.json')  
+          .then(res=>res.json())
+          .then(data => setCosmetics(data))
+        },[])
+   
     return (
         
         <div>

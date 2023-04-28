@@ -22,5 +22,17 @@ let shoppingCart = {};
     localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart))
 
 }
+// remove from dasta base
 
-export{addToDb}
+const removeFromDb = id =>{
+        const storecart = localStorage.getItem('shopping-cart')
+        if(storecart){
+            const shopping =JSON.parse(storecart)
+            if(id in shopping){
+                delete shopping[id];
+                localStorage.setItem('shopping-cart', JSON.stringify(shopping))
+
+            }
+        }
+}
+export{addToDb , removeFromDb}
